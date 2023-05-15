@@ -1,4 +1,7 @@
 import React from "react";
+import valorant from "../../../assets/Valorant.png";
+import csgo from "../../../assets/csgo.png";
+import fifa from "../../../assets/Fifa.png";
 
 const Games = () => {
     return (
@@ -12,50 +15,58 @@ const Games = () => {
 
                         <p className="max-w-md mx-auto mt-4 text-gray-500">
                             These are the list of games that will be played in
-                            the tournament, come, participate and show off your
+                            the tournament. Join! participate and show off your
                             skills.
                         </p>
                     </header>
 
-                    <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <ul className="grid gap-3 mt-8 sm:grid-cols-2 lg:grid-cols-3">
                         <li>
                             <a href="#" className="block overflow-hidden group">
                                 <img
-                                    src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                                    src={valorant}
                                     alt=""
                                     className="h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
                                 />
                             </a>
+                            <p className="mt-2">
+                                <span className="tracking-wider text-gray-900">
+                                    {" "}
+                                    Valorant{" "}
+                                </span>
+                            </p>
                         </li>
 
                         <li>
                             <a href="#" className="block overflow-hidden group">
                                 <img
-                                    src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                                    src={csgo}
                                     alt=""
                                     className="h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
                                 />
                             </a>
+                            <p className="mt-2">
+                                <span className="tracking-wider text-gray-900">
+                                    {" "}
+                                    CS2{" "}
+                                </span>
+                            </p>
                         </li>
 
                         <li>
                             <a href="#" className="block overflow-hidden group">
                                 <img
-                                    src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                                    src={fifa}
                                     alt=""
                                     className="h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
                                 />
                             </a>
-                        </li>
-
-                        <li>
-                            <a href="#" className="block overflow-hidden group">
-                                <img
-                                    src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                    alt=""
-                                    className="h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
-                                />
-                            </a>
+                            <p className="mt-2">
+                                <span className="tracking-wider text-gray-900">
+                                    {" "}
+                                    FIFA 2023{" "}
+                                </span>
+                            </p>
                         </li>
                     </ul>
                 </div>
