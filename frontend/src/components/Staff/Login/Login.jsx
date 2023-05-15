@@ -53,7 +53,7 @@ const Login = () => {
                                         id="username"
                                         name="username"
                                         required
-                                        className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                                        className="mt-1 w-full h-9 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
 
@@ -70,7 +70,7 @@ const Login = () => {
                                         id="Password"
                                         name="password"
                                         required
-                                        className="mt-1 mr-2 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                                        className="mt-1 w-full h-9 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
 
