@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Navbar = () => {
+const FormNavbar = () => {
     const [mobile, setMobile] = useState(true);
 
     const mobileView = () => {
@@ -9,11 +9,8 @@ const Navbar = () => {
 
     return (
         <>
-            <header
-                aria-label="Site Header"
-                className="inset-x-0 top-0 fixed bg-white shadow-md"
-            >
-                <div className=" mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+            <header aria-label="Site Header" className="bg-white shadow-md">
+                <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
                     <a className="block text-teal-600" href="/">
                         <span className="sr-only">Home</span>
                         <img
@@ -33,15 +30,9 @@ const Navbar = () => {
                         <div className="flex items-center gap-4">
                             <a
                                 className="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
-                                href="/dashboard"
+                                href="/"
                             >
-                                Login
-                            </a>
-                            <a
-                                className="block rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-blue-600 transition hover:text-blue-600/75 sm:block"
-                                href="/registration"
-                            >
-                                Register
+                                Home
                             </a>
                         </div>
                     </div>
@@ -51,4 +42,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default FormNavbar;

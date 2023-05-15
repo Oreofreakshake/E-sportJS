@@ -5,10 +5,6 @@ const Sponsor = () => {
         <div>
             <div class="bg-gray-900">
                 <div class="max-w-7xl mt-16 mb-16 mx-auto flex flex-wrap justify-around gap-8 py-12 px-4">
-                    <p class="w-full mb-4 -mt-4 text-center text-2xl font-semibold text-gray-400">
-                        Our Sponsors
-                    </p>
-
                     <a
                         class="flex items-center justify-center text-gray-400 hover:text-gray-200"
                         href="https://ploi.io"
