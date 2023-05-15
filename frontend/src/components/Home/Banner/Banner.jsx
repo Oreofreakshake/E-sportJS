@@ -14,12 +14,10 @@ const Banner = () => {
                             </span>
                         </h1>
 
-                        <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+                        <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed font-fira">
                             Playing games is like studying for life's
-                            challenges; it's through strategic thinking,
-                            perseverance, and a hunger for improvement that we
-                            level up our skills and unlock the secrets to
-                            success.
+                            challenges; it's a playful way to sharpen your
+                            skills and level up your knowledge.
                         </p>
                         <div class="mt-8 flex flex-wrap justify-center gap-4">
                             <a
