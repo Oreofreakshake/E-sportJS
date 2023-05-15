@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //my components
-import Dashboard from "./Dashboard";
-import Login from "../Login/Login";
+import Dashboard from "./Dashboard/Dashboard";
+import Login from "./Login/Login";
 
 const Staff = () => {
     const [auth, setAuth] = useState(false); //check if user auth state
