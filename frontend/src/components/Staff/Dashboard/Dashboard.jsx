@@ -35,7 +35,7 @@ const Dashboard = () => {
                                 Welcome Back!
                             </h1>
 
-                            <p className="mt-1.5 text-sm text-gray-500">
+                            <p className="mt-1.5 text-sm font-fira text-gray-500">
                                 Let's review submissions! 🎉
                             </p>
                         </div>

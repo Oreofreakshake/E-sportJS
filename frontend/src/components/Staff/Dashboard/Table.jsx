@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cookies from "js-cookie";
+import DialogComp from "./DialogComp";
 
 const Table = () => {
     const [data, setData] = useState([]);
@@ -26,31 +27,25 @@ const Table = () => {
             });
     }, []);
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:3000/api/accepts", header)
-            .then((response) => {
-                setAcceptedData(response.data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
-
-    useEffect(() => {
-        axios
-            .get("http://localhost:3000/api/rejects", header)
-            .then((response) => {
-                setRejectedData(response.data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
-
     const count = data.length;
-    const acceptedCount = acceptedData.length;
-    const rejectedCount = rejectedData.length;
+
+    const [checked, setChecked] = useState(false);
+    const [currData, setCurrData] = useState([]);
+
+    const checkClick = (current) => async () => {
+        await setCurrData(current);
+        await setChecked(!checked);
+        await axios.patch(`http://localhost:3000/api/posts/${currData.id}`, {
+            name: data.name,
+            NID: data.NID,
+            DOB: data.DOB,
+            number: data.number,
+            email: data.email,
+            isChecked: checked,
+            isReject: data.isReject,
+            faculty: data.faculty,
+        });
+    };
 
     return (
         <div>
@@ -63,16 +58,16 @@ const Table = () => {
                 <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-700">
                     {count} submissions
                 </span>
-                <span className="whitespace-nowrap rounded-full bg-green-100 ml-2 px-2.5 py-0.5 text-sm text-green-700">
+                {/* <span className="whitespace-nowrap rounded-full bg-green-100 ml-2 px-2.5 py-0.5 text-sm text-green-700">
                     {acceptedCount} accepted
                 </span>
                 <span className="whitespace-nowrap rounded-full bg-red-100 ml-2 px-2.5 py-0.5 text-sm text-red-700">
                     {rejectedCount} rejected
-                </span>
+                </span> */}
             </div>
 
             <div className="overflow-x-auto mt-24 mb-24 rounded-lg border border-gray-200">
-                <div className="text-xl text-center p-2 my-5 font-bold">
+                <div className="text-xl text-center font-fira p-2 my-5 font-bold">
                     Submissions
                 </div>
                 <div className="overflow-x-auto text-center">
@@ -149,20 +144,17 @@ const Table = () => {
                                             </a>
                                         </td>
                                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                            <button class="ml-2 group relative inline-block overflow-hidden border border-green-600 px-4 py-3 focus:outline-none focus:ring">
-                                                <span class="absolute inset-y-0 right-0 w-[2px] bg-green-600 transition-all group-hover:w-full group-green:bg-indigo-500"></span>
+                                            <button
+                                                onClick={checkClick(post)}
+                                                class={`ml-2 group relative inline-block overflow-hidden border border-green-600 px-4 py-3 focus:outline-none focus:ring`}
+                                            >
+                                                <span class="absolute inset-y-0 right-0 w-[2px] bg-green-600 transition-all group-hover:w-full group-green:bg-green-500"></span>
 
                                                 <span class="relative text-sm font-medium text-green-600 transition-colors group-hover:text-white">
                                                     accept
                                                 </span>
                                             </button>
-                                            <button class="group relative inline-block overflow-hidden border border-red-600 px-4 py-3 focus:outline-none focus:ring">
-                                                <span class="absolute inset-y-0 right-0 w-[2px] bg-red-600 transition-all group-hover:w-full group-active:bg-red-500"></span>
-
-                                                <span class="relative text-sm font-medium text-red-600 transition-colors group-hover:text-white">
-                                                    reject
-                                                </span>
-                                            </button>
+                                            <DialogComp />
                                         </td>
                                     </tr>
                                 ))}

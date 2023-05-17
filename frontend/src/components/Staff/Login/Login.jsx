@@ -5,6 +5,7 @@ import cookie from "js-cookie";
 
 const Login = () => {
     const [incorrect, setIncorrect] = useState(false);
+    const [incorrectMessage, setIncorrectMessage] = useState("");
 
     const [user, SetUser] = useState({
         username: "",
@@ -12,22 +13,20 @@ const Login = () => {
     });
 
     const loginToDash = () => {
-        if (user.username && user.password !== "") {
-            axios
-                .post("http://localhost:3000/api/login", {
-                    username: user.username,
-                    password: user.password,
-                })
-                .then((response) => {
-                    cookie.set("accessToken", response.data["accessToken"]);
-                    cookie.set("refreshToken", response.data["refreshToken"]);
-                    cookie.set("auth", true);
-                    window.location.reload(false);
-                });
-        } else {
-            console.log("Input cannot be empty");
-            setIncorrect(true);
-        }
+        axios
+            .post("http://localhost:3000/api/login", {
+                username: user.username,
+                password: user.password,
+            })
+            .then((response) => {
+                cookie.set("accessToken", response.data["accessToken"]);
+                cookie.set("refreshToken", response.data["refreshToken"]);
+                cookie.set("auth", true);
+            })
+            .catch((error) => {
+                setIncorrect(true);
+                setIncorrectMessage(error.response.data);
+            });
     };
 
     const InputChange = (event) => {
@@ -54,7 +53,7 @@ const Login = () => {
                         <div className="max-w-xl lg:max-w-3xl">
                             {incorrect && (
                                 <div className="text-red-500 font-fira transition ease-in duration-150">
-                                    Try again!
+                                    {incorrectMessage}
                                 </div>
                             )}
                             <h1 className="mt-6 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl md:text-4xl">

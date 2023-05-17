@@ -18,34 +18,13 @@ model Post {
   number    Int
   email     String   @unique
   faculty   String
-  createdAt DateTime @default(now())
-}
-
-model Reject {
-  id        Int      @id @default(autoincrement())
-  name      String
-  NID       String   @unique
-  DOB       String
-  number    Int
-  email     String   @unique
-  faculty   String
-  reason    String
-  createdAt DateTime @default(now())
-}
-
-model Accept {
-  id        Int      @id @default(autoincrement())
-  name      String
-  NID       String   @unique
-  DOB       String
-  number    Int
-  email     String   @unique
-  faculty   String
+  isChecked Boolean  @default(false)
+  isReject  Boolean  @default(false)
   createdAt DateTime @default(now())
 }
 
 model Staff {
   id       Int    @id @default(autoincrement())
   username String @unique
-  password String
+  password String @unique
 }

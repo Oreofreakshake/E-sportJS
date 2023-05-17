@@ -38,7 +38,7 @@ router.post("/refresh", (req, res) => {
 
 const generateAccessToken = (user) => {
     return jwt.sign({ id: user.id }, "mySecretKey", {
-        expiresIn: "20s",
+        expiresIn: "600s",
     });
 };
 
@@ -46,23 +46,25 @@ const generateRefreshToken = (user) => {
     return jwt.sign({ id: user.id }, "myRefreshSecretKey");
 };
 
-router.post("/login", (req, res) => {
-    const { username, password } = req.body;
-    const user = prisma.staff.findUnique((u) => {
-        return u.username === username && u.password === password;
+router.post("/login", async (req, res) => {
+    const user = await prisma.staff.findFirst({
+        where: {
+            username: req.body.username,
+            password: req.body.password,
+        },
     });
+
     if (user) {
         //Generate an access token
         const accessToken = generateAccessToken(user);
         const refreshToken = generateRefreshToken(user);
         refreshTokens.push(refreshToken);
         res.json({
-            username: user.username,
             accessToken,
             refreshToken,
         });
     } else {
-        res.status(400).json("Username or password incorrect!");
+        res.status(400).json("Username or Password is incorrect!");
     }
 });
 
@@ -114,45 +116,16 @@ router.post("/posts", async (req, res, next) => {
     }
 });
 
-// reject
-
-router.get("/rejects", verify, async (req, res, next) => {
+router.patch("/posts/:id", async (req, res, next) => {
     try {
-        const rejectedPosts = await prisma.reject.findMany({});
-        res.json(rejectedPosts);
-    } catch (error) {
-        next(error);
-    }
-});
-
-router.post("/rejects", verify, async (req, res, next) => {
-    try {
-        const rejectedPost = await prisma.reject.create({
+        const { id } = req.params;
+        const post = await prisma.post.update({
+            where: {
+                id: Number(id),
+            },
             data: req.body,
         });
-        res.json({ status: res.status, success: "created" });
-    } catch (error) {
-        res.json({ error: error });
-    }
-});
-
-// accept
-
-router.get("/accepts", verify, async (req, res, next) => {
-    try {
-        const acceptedPosts = await prisma.accept.findMany({});
-        res.json(acceptedPosts);
-    } catch (error) {
-        next(error);
-    }
-});
-
-router.post("/accepts", verify, async (req, res, next) => {
-    try {
-        const acceptedPost = await prisma.accept.create({
-            data: req.body,
-        });
-        res.json({ status: res.status, success: "created" });
+        res.json(post);
     } catch (error) {
         next(error);
     }
