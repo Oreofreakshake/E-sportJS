@@ -25,6 +25,11 @@
     -   [ ] can export data
     -   [ ] images view
 
+### staff user
+
+-   `username: admin`
+-   `password: admin123`
+
 ### routes
 
 -   http://localhost:5173/
