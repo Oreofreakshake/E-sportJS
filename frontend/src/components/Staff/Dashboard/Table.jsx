@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import cookies from "js-cookie";
 
 const Table = () => {
     const [data, setData] = useState([]);
     const [acceptedData, setAcceptedData] = useState([]);
     const [rejectedData, setRejectedData] = useState([]);
 
+    const accessToken = cookies.get("accessToken");
+
     const header = {
         headers: {
-            Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQxNzc1MjUsImV4cCI6MTY4NTE3NzUyNX0.xl0DOf2MdMQHsc8BR0mAsiCN5uPWV3F6iKPR8hK2OWg",
+            Authorization: `Bearer ${accessToken}`,
         },
     };
 
@@ -57,7 +59,7 @@ const Table = () => {
 
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 */}
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-left mt-12">
                 <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-700">
                     {count} submissions
                 </span>
@@ -73,10 +75,13 @@ const Table = () => {
                 <div className="text-xl text-center p-2 my-5 font-bold">
                     Submissions
                 </div>
-                <div className="overflow-hidden">
-                    <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                <div className="overflow-x-auto text-center">
+                    <table className=" divide-y-2 divide-gray-200 bg-white text-sm mb-8">
                         <thead>
                             <tr>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                    ID
+                                </th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                     Full Name
                                 </th>{" "}
@@ -98,15 +103,21 @@ const Table = () => {
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                     Payment
                                 </th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                    Submission
+                                </th>
                             </tr>
                         </thead>
 
-                        <tbody className="divide-y divide-gray-200">
+                        <tbody className="divide-y divide-gray-200 font-fira">
                             {data
                                 .slice()
                                 .reverse()
                                 .map((post) => (
                                     <tr>
+                                        <td className="whitespace-nowrap px-14  py-2 text-gray-700">
+                                            {post.id}
+                                        </td>
                                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                                             {post.name}
                                         </td>
@@ -136,6 +147,22 @@ const Table = () => {
                                                     Show
                                                 </span>
                                             </a>
+                                        </td>
+                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                            <button class="ml-2 group relative inline-block overflow-hidden border border-green-600 px-4 py-3 focus:outline-none focus:ring">
+                                                <span class="absolute inset-y-0 right-0 w-[2px] bg-green-600 transition-all group-hover:w-full group-green:bg-indigo-500"></span>
+
+                                                <span class="relative text-sm font-medium text-green-600 transition-colors group-hover:text-white">
+                                                    accept
+                                                </span>
+                                            </button>
+                                            <button class="group relative inline-block overflow-hidden border border-red-600 px-4 py-3 focus:outline-none focus:ring">
+                                                <span class="absolute inset-y-0 right-0 w-[2px] bg-red-600 transition-all group-hover:w-full group-active:bg-red-500"></span>
+
+                                                <span class="relative text-sm font-medium text-red-600 transition-colors group-hover:text-white">
+                                                    reject
+                                                </span>
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}

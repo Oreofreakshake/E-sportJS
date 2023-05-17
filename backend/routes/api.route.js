@@ -38,7 +38,7 @@ router.post("/refresh", (req, res) => {
 
 const generateAccessToken = (user) => {
     return jwt.sign({ id: user.id }, "mySecretKey", {
-        expiresIn: "1000000s",
+        expiresIn: "20s",
     });
 };
 

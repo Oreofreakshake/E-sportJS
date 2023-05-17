@@ -16,24 +16,21 @@ const Games = () => {
                         <p className="max-w-md mx-auto mt-4 text-gray-500">
                             These are the list of games that will be played in
                             the tournament. Participate and show off your
-                            skills.
+                            skills!
                         </p>
                     </header>
 
                     <ul className="grid gap-3 mt-8 sm:grid-cols-2 lg:grid-cols-3">
                         <li>
-                            <a
-                                href="#"
-                                className="block overflow-hidden group hover:shadow-xl"
-                            >
+                            <div className="block overflow-hidden group">
                                 <img
                                     src={valorant}
                                     alt=""
-                                    className="h-[250px] w-full object-cover transition duration-500 sm:h-[350px]"
+                                    className="h-[250px] w-full object-cover transition duration-500 shadow-2xl cursor-pointer sm:h-[350px]"
                                 />
-                            </a>
+                            </div>
                             <p className="mt-2">
-                                <span className="tracking-wider text-gray-900">
+                                <span className="tracking-wider text-gray-900 font-fira">
                                     {" "}
                                     Valorant{" "}
                                 </span>
@@ -41,18 +38,15 @@ const Games = () => {
                         </li>
 
                         <li>
-                            <a
-                                href="#"
-                                className="block overflow-hidden group hover:shadow-xl"
-                            >
+                            <div className="block overflow-hidden group">
                                 <img
                                     src={csgo}
                                     alt=""
-                                    className="h-[250px] w-full object-cover transition duration-500 sm:h-[350px]"
+                                    className="h-[250px] w-full object-cover transition duration-500 shadow-2xl cursor-pointer sm:h-[350px]"
                                 />
-                            </a>
+                            </div>
                             <p className="mt-2">
-                                <span className="tracking-wider text-gray-900">
+                                <span className="tracking-wider text-gray-900 font-fira">
                                     {" "}
                                     CS2{" "}
                                 </span>
@@ -60,18 +54,15 @@ const Games = () => {
                         </li>
 
                         <li>
-                            <a
-                                href="#"
-                                className="block overflow-hidden group hover:shadow-xl"
-                            >
+                            <div className="block overflow-hidden group">
                                 <img
                                     src={fifa}
                                     alt=""
-                                    className="h-[250px] w-full object-cover transition duration-500 sm:h-[350px]"
+                                    className="h-[250px] w-full object-cover transition duration-500 shadow-2xl cursor-pointer sm:h-[350px]"
                                 />
-                            </a>
+                            </div>
                             <p className="mt-2">
-                                <span className="tracking-wider text-gray-900">
+                                <span className="tracking-wider text-gray-900 font-fira">
                                     {" "}
                                     FIFA 2023{" "}
                                 </span>
