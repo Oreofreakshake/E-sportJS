@@ -1,17 +1,17 @@
 import React from "react";
 import FormNavbar from "./FormNavbar";
 import Footer from "../Home/Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+    const navigate = useNavigate();
+
+    const buttonClick = () => {
+        navigate("/");
+    };
     return (
         <div>
-            {/*
-    Heads up! 👋
-  
-    Plugins:
-      - @tailwindcss/forms
-  */}
-            <FormNavbar />
+            <FormNavbar name={"Home"} func={buttonClick} />
 
             <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-lg text-center">
