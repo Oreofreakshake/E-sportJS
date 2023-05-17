@@ -38,7 +38,7 @@ router.post("/refresh", (req, res) => {
 
 const generateAccessToken = (user) => {
     return jwt.sign({ id: user.id }, "mySecretKey", {
-        expiresIn: "100000s",
+        expiresIn: "1000000s",
     });
 };
 
@@ -154,7 +154,7 @@ router.post("/accepts", verify, async (req, res, next) => {
         });
         res.json({ status: res.status, success: "created" });
     } catch (error) {
-        res.json({ error: error });
+        next(error);
     }
 });
 

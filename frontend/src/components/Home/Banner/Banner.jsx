@@ -14,7 +14,7 @@ const Banner = () => {
                             </span>
                         </h1>
 
-                        <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed font-fira">
+                        <p className="mx-auto mt-4 max-w-xl sm:text-lg/relaxed font-fira">
                             Let's show off your skills as a competitive gamer.
                         </p>
                         <div class="mt-8 flex flex-wrap justify-center gap-4">

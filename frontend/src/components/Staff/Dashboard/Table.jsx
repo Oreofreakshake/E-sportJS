@@ -9,7 +9,7 @@ const Table = () => {
     const header = {
         headers: {
             Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQxNjQ1MjYsImV4cCI6MTY4NDI2NDUyNn0.zHLDJ6Zc9LkgXEz8ZdFD7q0A1XNppK7t8x9_T63FaPw",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQxNzc1MjUsImV4cCI6MTY4NTE3NzUyNX0.xl0DOf2MdMQHsc8BR0mAsiCN5uPWV3F6iKPR8hK2OWg",
         },
     };
 
