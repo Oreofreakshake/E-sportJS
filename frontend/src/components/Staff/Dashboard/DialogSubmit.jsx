@@ -4,25 +4,39 @@ import { Fragment, useState } from "react";
 const DialogComp = (props) => {
     let [isOpen, setIsOpen] = useState(false);
 
+    // isReject = false -> 2 calls
+    // isReject = true -> 3 calls
+
     function closeModal() {
         setIsOpen(false);
+        props.func();
+        if (props.reject === false) {
+            window.location.reload(false);
+        }
     }
 
     function openModal() {
-        setIsOpen(true);
+        if (props.reject === true) {
+            setIsOpen(true);
+            props.func();
+            props.func();
+        } else {
+            setIsOpen(true);
+            props.func();
+        }
     }
 
     return (
         <>
             <button
                 onClick={openModal}
-                class="group relative inline-block overflow-hidden border border-blue-600 px-4 py-3 focus:outline-none focus:ring"
+                className={`${
+                    props.reject
+                        ? "inline-block rounded bg-green-600 px-3 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-green-500"
+                        : "inline-block rounded bg-red-600 px-3 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-red-500"
+                } `}
             >
-                <span class="absolute inset-y-0 right-0 w-[2px] bg-blue-600 transition-all group-hover:w-full group-active:bg-blue-500"></span>
-
-                <span class="relative text-sm font-medium text-blue-600 transition-colors group-hover:text-white">
-                    {props.name}
-                </span>
+                {props.reject ? "accept" : "reject"}
             </button>
 
             <Transition appear show={isOpen} as={Fragment}>
@@ -53,19 +67,18 @@ const DialogComp = (props) => {
                                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                                     <Dialog.Title
                                         as="h3"
-                                        className="text-lg font-fira font-semibold leading-6 text-gray-900"
+                                        className="text-lg font-medium leading-6 text-gray-900"
                                     >
-                                        {props.title}
+                                        {props.reject
+                                            ? "Accepted!"
+                                            : "Rejected!"}
                                     </Dialog.Title>
-
-                                    <img
-                                        className="mt-3 mb-4 rounded-md"
-                                        src={props.image}
-                                    />
 
                                     <div className="mt-2">
                                         <p className="text-sm text-gray-500">
-                                            {props.detail}
+                                            {props.reject
+                                                ? "This submission has been accepted."
+                                                : "This submission has been rejected."}
                                         </p>
                                     </div>
 
@@ -75,7 +88,7 @@ const DialogComp = (props) => {
                                             className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                                             onClick={closeModal}
                                         >
-                                            {props.buttonName}
+                                            Ok
                                         </button>
                                     </div>
                                 </Dialog.Panel>

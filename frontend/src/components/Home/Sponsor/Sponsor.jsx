@@ -21,7 +21,7 @@ const Sponsor = () => {
                         <img
                             alt="Lava"
                             src={sentinels}
-                            className="h-56 w-full rounded-xl object-cover shadow-xl transition "
+                            className="h-56 w-full rounded-xl object-cover shadow-xl "
                         />
 
                         <div className="p-4">
@@ -55,8 +55,8 @@ const Sponsor = () => {
                             <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
                                 Dhiraagu, a renowned ISP in the Maldives, offers
                                 fast internet connections for gamers
-                                participating in tournaments, including this one, ensuring a smooth
-                                gaming experience.
+                                participating in tournaments, including this
+                                one, ensuring a smooth gaming experience.
                             </p>
                         </div>
                     </article>

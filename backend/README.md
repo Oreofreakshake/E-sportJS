@@ -14,7 +14,7 @@ Backend concept
 -   [x] DB setup and create models
 -   [x] endpoint creation
 -   [x] endpoint validation
--   [ ] Generate secret for mySecretKey & myRefreshSecretKey
+-   [X] Generate secret for mySecretKey & myRefreshSecretKey
 -   [x] Refactor and use one DB instead of 3 for posts
 -   [x] Fix login endpoint validation using DB data
 -   [ ] images submission update DB (possibly) or endpoint

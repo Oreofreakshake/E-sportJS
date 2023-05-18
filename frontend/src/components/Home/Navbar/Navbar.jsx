@@ -11,7 +11,7 @@ const Navbar = () => {
         <>
             <header
                 aria-label="Site Header"
-                className="inset-x-0 top-0 fixed bg-white shadow-md"
+                className="inset-x-0 top-0 z-40 fixed bg-white shadow-md"
             >
                 <div className=" mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
                     <a className="block text-teal-600" href="/">

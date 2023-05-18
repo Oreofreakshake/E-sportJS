@@ -30,7 +30,7 @@ const Games = () => {
                                 <img
                                     src={valorant}
                                     alt=""
-                                    className="h-[250px] w-full object-cover transition duration-500 shadow-2xl cursor-pointer sm:h-[350px]"
+                                    className="h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 shadow-2xl sm:h-[350px]"
                                 />
                             </div>
                             <p className="mt-2">
@@ -51,7 +51,7 @@ const Games = () => {
                                 <img
                                     src={csgo}
                                     alt=""
-                                    className="h-[250px] w-full object-cover transition duration-500 shadow-2xl cursor-pointer sm:h-[350px]"
+                                    className="h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 shadow-2xl sm:h-[350px]"
                                 />
                             </div>
                             <p className="mt-2">
@@ -73,7 +73,7 @@ const Games = () => {
                                 <img
                                     src={fifa}
                                     alt=""
-                                    className="h-[250px] w-full object-cover transition duration-500 shadow-2xl cursor-pointer sm:h-[350px]"
+                                    className="h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 shadow-2xl sm:h-[350px]"
                                 />
                             </div>
                             <p className="mt-2">

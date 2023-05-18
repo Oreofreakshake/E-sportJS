@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cookies from "js-cookie";
 import DialogComp from "./DialogComp";
+import DialogSubmit from "./DialogSubmit";
+
+import exportFromJSON from "export-from-json";
 
 const Table = () => {
     const [data, setData] = useState([]);
     const [acceptedData, setAcceptedData] = useState([]);
-    const [rejectedData, setRejectedData] = useState([]);
 
     const accessToken = cookies.get("accessToken");
 
@@ -27,24 +29,46 @@ const Table = () => {
             });
     }, []);
 
-    const count = data.length;
-    const acceptedCount = 0;
-    const rejectedCount = 0;
+    useEffect(() => {
+        if (data.length > 0) {
+            const filteredData = data.filter((item) => !item.isReject);
+            setAcceptedData(filteredData);
+        }
+    }, [data]);
 
-    const [checked, setChecked] = useState(false);
+    const exportAccept = () => {
+        const fileName = "accepted";
+        const exportType = exportFromJSON.types.csv;
+        exportFromJSON({ data: acceptedData, fileName, exportType });
+    };
+
+    const count = data.length;
+    let rejectedCount = 0;
+
+    for (let i = 0; i < count; i++) {
+        if (data[i].isReject) {
+            rejectedCount++;
+        }
+    }
+    let acceptedCount = count - rejectedCount;
+
+    const [checked, setChecked] = useState(data.isReject);
     const [currData, setCurrData] = useState([]);
 
-    const checkClick = (current) => async () => {
-        await setCurrData(current);
-        await setChecked(!checked);
-        await axios.patch(`http://localhost:3000/api/posts/${currData.id}`, {
+    const checkClick = (current) => () => {
+        setCurrData(current);
+        setChecked(!checked);
+
+        const id = parseInt(currData.id, 10);
+
+        axios.patch(`http://localhost:3000/api/posts/${id}`, {
             name: data.name,
             NID: data.NID,
             DOB: data.DOB,
             number: data.number,
             email: data.email,
-            isChecked: checked,
-            isReject: data.isReject,
+            isChecked: data.isChecked,
+            isReject: checked,
             faculty: data.faculty,
         });
     };
@@ -69,6 +93,18 @@ const Table = () => {
             </div>
 
             <div className="overflow-x-auto mt-24 mb-24 rounded-lg border border-gray-200">
+                <div className="p-3">
+                    <button
+                        onClick={exportAccept}
+                        class="group relative inline-block overflow-hidden border border-indigo-600 px-4 py-3 focus:outline-none focus:ring"
+                    >
+                        <span class="absolute inset-y-0 right-0 w-[2px] bg-indigo-600 transition-all group-hover:w-full group-active:bg-indigo-500"></span>
+
+                        <span class="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white">
+                            Export Accepted Submission
+                        </span>
+                    </button>
+                </div>
                 <div className="overflow-x-auto text-center">
                     <table className=" divide-y-2 divide-gray-200 bg-white text-sm mb-8">
                         <thead>
@@ -94,10 +130,10 @@ const Table = () => {
                                 <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     Faculty
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                                    Payment
+                                <th className="whitespace-nowrap px-3 py-2 font-bold text-gray-900">
+                                    Action
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                                <th className="whitespace-nowrap px-3 py-2 font-bold text-gray-900">
                                     Submission
                                 </th>
                             </tr>
@@ -109,7 +145,7 @@ const Table = () => {
                                 .reverse()
                                 .map((post) => (
                                     <tr>
-                                        <td className="whitespace-nowrap px-7  py-2 text-gray-700">
+                                        <td className="whitespace-nowrap px-14 py-2 text-gray-700">
                                             {post.id}
                                         </td>
                                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
@@ -124,26 +160,15 @@ const Table = () => {
                                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                                             {post.email}
                                         </td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                        <td className="whitespace-nowrap px-3 py-2 text-gray-70 0">
                                             {post.number}
                                         </td>
                                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                                             {post.faculty}
                                         </td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                            <a
-                                                class="group relative inline-block overflow-hidden border border-indigo-600 px-4 py-3 focus:outline-none focus:ring"
-                                                href="/dashboard"
-                                            >
-                                                <span class="absolute inset-y-0 right-0 w-[2px] bg-indigo-600 transition-all group-hover:w-full group-active:bg-indigo-500"></span>
 
-                                                <span class="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white">
-                                                    Show
-                                                </span>
-                                            </a>
-                                        </td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                            <button
+                                        <td className="whitespace-nowrap px-5 py-2 text-gray-700">
+                                            {/* <button
                                                 onClick={checkClick(post)}
                                                 class={`group relative inline-block overflow-hidden border border-green-600 px-2 py-3 focus:outline-none focus:ring`}
                                             >
@@ -152,14 +177,18 @@ const Table = () => {
                                                 <span class="relative text-sm font-medium text-green-600 transition-colors group-hover:text-white">
                                                     accept
                                                 </span>
-                                            </button>
-                                            <button class="group relative inline-block overflow-hidden border border-red-600 px-2 py-3 focus:outline-none focus:ring">
-                                                <span class="absolute inset-y-0 right-0 w-[2px] bg-red-600 transition-all group-hover:w-full group-active:bg-red-500"></span>
+                                            </button> */}
 
-                                                <span class="relative text-sm font-medium text-red-600 transition-colors group-hover:text-white">
-                                                    reject
-                                                </span>
-                                            </button>
+                                            <DialogSubmit
+                                                name="reject"
+                                                reject={post.isReject}
+                                                func={checkClick(post)}
+                                            />
+                                        </td>
+                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                            {post.isReject === true
+                                                ? "Rejected"
+                                                : "Accepted"}
                                         </td>
                                     </tr>
                                 ))}

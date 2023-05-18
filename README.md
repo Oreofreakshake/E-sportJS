@@ -19,9 +19,9 @@
 -   [x] Registration form functionality (submit)
 -   [x] Registration form functionality (validation)
 -   [x] Login form functionality (login with error handling)
--   [ ] Dashboard fully functional
-    -   [ ] can accept data and reject data (with reason if reject)
-    -   [ ] can export data
+-   [X] Dashboard fully functional
+    -   [X] can accept data and reject data (with reason if reject)
+    -   [X] can export data
     -   [ ] images submit and view
 
 ### staff user
