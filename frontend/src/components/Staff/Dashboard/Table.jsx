@@ -154,7 +154,7 @@ const Table = () => {
                                                     accept
                                                 </span>
                                             </button>
-                                            <DialogComp />
+                                            <DialogComp name="reject" />
                                         </td>
                                     </tr>
                                 ))}

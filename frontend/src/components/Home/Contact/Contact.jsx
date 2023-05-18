@@ -21,7 +21,7 @@ const Contact = () => {
 
                         <p className="hidden text-gray-500 sm:mt-4 sm:block">
                             If you have any questions regarding to our E-sports
-                            tournament event, write down your email and we will
+                            tournament event, send us your email and we will
                             send you a PDF guide about the event.
                         </p>
                     </div>

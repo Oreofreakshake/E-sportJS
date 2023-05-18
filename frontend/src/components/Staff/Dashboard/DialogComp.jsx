@@ -1,7 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
-const DialogComp = () => {
+
+const DialogComp = (props) => {
     let [isOpen, setIsOpen] = useState(false);
 
     function closeModal() {
@@ -21,7 +22,7 @@ const DialogComp = () => {
                 <span class="absolute inset-y-0 right-0 w-[2px] bg-red-600 transition-all group-hover:w-full group-active:bg-red-500"></span>
 
                 <span class="relative text-sm font-medium text-red-600 transition-colors group-hover:text-white">
-                    reject
+                    {props.name}
                 </span>
             </button>
 
@@ -55,14 +56,17 @@ const DialogComp = () => {
                                         as="h3"
                                         className="text-lg font-medium leading-6 text-gray-900"
                                     >
-                                        Payment successful
+                                        {props.title}
                                     </Dialog.Title>
+
+                                    <img
+                                        className="mt-3 mb-4 rounded-md"
+                                        src={props.image}
+                                    />
+
                                     <div className="mt-2">
                                         <p className="text-sm text-gray-500">
-                                            Your payment has been successfully
-                                            submitted. We’ve sent you an email
-                                            with all of the details of your
-                                            order.
+                                            {props.detail}
                                         </p>
                                     </div>
 
@@ -72,7 +76,7 @@ const DialogComp = () => {
                                             className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                                             onClick={closeModal}
                                         >
-                                            Got it, thanks!
+                                            {props.buttonName}
                                         </button>
                                     </div>
                                 </Dialog.Panel>
