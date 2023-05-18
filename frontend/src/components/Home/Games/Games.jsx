@@ -60,7 +60,8 @@ const Games = () => {
                                         name="CS2"
                                         buttonName="Fire"
                                         title="Counter Strike 2"
-                                        detail="Counter-Strike 2 has arrived, bringing with it a thrilling new FPS experience. The game boasts impressive graphics, immersing players in realistic and detailed environments. With improved visuals, from maps to weapon models, Counter-Strike 2 offers a heightened sense of realism. Dynamic smokes add an exciting twist, eliminating one-way sightlines and promoting fair play. Gone are the frustrations of unfair advantages; now, players can engage in intense combat on an even playing field. Additionally, Counter-Strike 2 introduces a customizable server tickrate, allowing users to adjust the server performance in real-time. This empowers players to fine-tune their online experience and create the optimal environment for competitive matches. With Counter-Strike 2, the iconic franchise raises the bar once again, delivering a game that balances visual excellence, tactical gameplay, and player-driven customization."
+                                        detail="
+                                        Counter-Strike 2 takes FPS gaming to new heights. Dynamic smokes remove one-way advantages, while improved graphics create a visually stunning experience. Players can now customize the server tickrate in real-time, enhancing competitive gameplay. Prepare for intense battles where strategy and skill are paramount. This highly anticipated sequel is set to redefine the genre and captivate gamers with its immersive and fair gameplay mechanics."
                                         image={cs2Banner}
                                     />
                                 </span>
@@ -81,7 +82,7 @@ const Games = () => {
                                         name="FIFA"
                                         buttonName="Fire"
                                         title="FIFA 2023"
-                                        detail="FIFA 23, developed by EA Sports, keeps the tradition alive by delivering another year of immersive football gameplay. Building upon the success of FIFA 22, the game retains the same engaging features that fans have come to enjoy. From realistic player movements to authentic team strategies, FIFA 23 captures the essence of the beautiful game. While there may not be groundbreaking innovations, the game offers updated player rosters, enhanced graphics, and refined mechanics. Players can still experience thrilling matches, compete in online leagues, and participate in various game modes, including Ultimate Team and Career Mode. With FIFA 23, fans can expect a familiar yet polished football experience that continues to showcase the passion and excitement of the sport on their gaming screens."
+                                        detail="FIFA 23, the highly anticipated football video game, delivers an immersive and realistic experience. With enhanced graphics and gameplay mechanics, players can enjoy the thrill of authentic matches. The game features updated player rosters, allowing fans to control their favorite teams and players. FIFA Ultimate Team and Career Mode provide additional depth and longevity to the gameplay. FIFA 23 is a must-have for football enthusiasts, offering hours of entertainment on the virtual pitch."
                                         image={fifaBanner}
                                     />
                                 </span>

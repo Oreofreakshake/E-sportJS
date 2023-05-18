@@ -28,6 +28,8 @@ const Table = () => {
     }, []);
 
     const count = data.length;
+    const acceptedCount = 0;
+    const rejectedCount = 0;
 
     const [checked, setChecked] = useState(false);
     const [currData, setCurrData] = useState([]);
@@ -55,62 +57,59 @@ const Table = () => {
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 */}
             <div className="text-center md:text-left mt-12">
-                <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-700">
+                <span className="whitespace-nowrap rounded-full font-medium bg-purple-100 px-2.5 py-0.5 text-sm text-purple-700">
                     {count} submissions
                 </span>
-                {/* <span className="whitespace-nowrap rounded-full bg-green-100 ml-2 px-2.5 py-0.5 text-sm text-green-700">
+                <span className="whitespace-nowrap rounded-full font-medium bg-green-100 ml-2 px-2.5 py-0.5 text-sm text-green-700">
                     {acceptedCount} accepted
                 </span>
-                <span className="whitespace-nowrap rounded-full bg-red-100 ml-2 px-2.5 py-0.5 text-sm text-red-700">
+                <span className="whitespace-nowrap rounded-full font-medium bg-red-100 ml-2 px-2.5 py-0.5 text-sm text-red-700">
                     {rejectedCount} rejected
-                </span> */}
+                </span>
             </div>
 
             <div className="overflow-x-auto mt-24 mb-24 rounded-lg border border-gray-200">
-                <div className="text-xl text-center font-fira p-2 my-5 font-bold">
-                    Submissions
-                </div>
                 <div className="overflow-x-auto text-center">
                     <table className=" divide-y-2 divide-gray-200 bg-white text-sm mb-8">
                         <thead>
                             <tr>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     ID
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     Full Name
                                 </th>{" "}
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     National ID
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     Date of Birth
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     Email
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     Contact
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     Faculty
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     Payment
                                 </th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                                     Submission
                                 </th>
                             </tr>
                         </thead>
 
-                        <tbody className="divide-y divide-gray-200 font-fira">
+                        <tbody className="divide-y font-medium divide-gray-200 font-fira">
                             {data
                                 .slice()
                                 .reverse()
                                 .map((post) => (
                                     <tr>
-                                        <td className="whitespace-nowrap px-12  py-2 text-gray-700">
+                                        <td className="whitespace-nowrap px-7  py-2 text-gray-700">
                                             {post.id}
                                         </td>
                                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
@@ -146,7 +145,7 @@ const Table = () => {
                                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                                             <button
                                                 onClick={checkClick(post)}
-                                                class={`ml-2 group relative inline-block overflow-hidden border border-green-600 px-4 py-3 focus:outline-none focus:ring`}
+                                                class={`group relative inline-block overflow-hidden border border-green-600 px-2 py-3 focus:outline-none focus:ring`}
                                             >
                                                 <span class="absolute inset-y-0 right-0 w-[2px] bg-green-600 transition-all group-hover:w-full group-green:bg-green-500"></span>
 
@@ -154,7 +153,13 @@ const Table = () => {
                                                     accept
                                                 </span>
                                             </button>
-                                            <DialogComp name="reject" />
+                                            <button class="group relative inline-block overflow-hidden border border-red-600 px-2 py-3 focus:outline-none focus:ring">
+                                                <span class="absolute inset-y-0 right-0 w-[2px] bg-red-600 transition-all group-hover:w-full group-active:bg-red-500"></span>
+
+                                                <span class="relative text-sm font-medium text-red-600 transition-colors group-hover:text-white">
+                                                    reject
+                                                </span>
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}

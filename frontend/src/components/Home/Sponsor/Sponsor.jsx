@@ -53,11 +53,10 @@ const Sponsor = () => {
                             </a>
 
                             <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                                Dhiraagu is a well-known Internet Service
-                                Provider in the Maldives that has been providing
-                                reliable and fast internet connections to users,
-                                including gamers participating in this
-                                tournament.
+                                Dhiraagu, a renowned ISP in the Maldives, offers
+                                fast internet connections for gamers
+                                participating in tournaments, including this one, ensuring a smooth
+                                gaming experience.
                             </p>
                         </div>
                     </article>
