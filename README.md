@@ -16,8 +16,8 @@
     -   [x] Registration form
     -   [x] Login form
     -   [x] Dashboard
--   [ ] Registration form functionality (submit)
--   [ ] Registration form functionality (validation)
+-   [x] Registration form functionality (submit)
+-   [x] Registration form functionality (validation)
 -   [x] Login form functionality (login with error handling)
 -   [ ] Dashboard fully functional
     -   [ ] can accept data

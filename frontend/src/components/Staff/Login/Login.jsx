@@ -22,6 +22,11 @@ const Login = () => {
                 cookie.set("accessToken", response.data["accessToken"]);
                 cookie.set("refreshToken", response.data["refreshToken"]);
                 cookie.set("auth", true);
+                SetUser({
+                    username: "",
+                    password: "",
+                });
+                window.location.reload(false);
             })
             .catch((error) => {
                 setIncorrect(true);

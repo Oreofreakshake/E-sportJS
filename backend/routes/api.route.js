@@ -112,7 +112,7 @@ router.post("/posts", async (req, res, next) => {
         });
         res.json({ status: res.status, success: "created" });
     } catch (error) {
-        res.json({ error: error });
+        next(error);
     }
 });
 

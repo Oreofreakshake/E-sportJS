@@ -110,7 +110,7 @@ const Table = () => {
                                 .reverse()
                                 .map((post) => (
                                     <tr>
-                                        <td className="whitespace-nowrap px-14  py-2 text-gray-700">
+                                        <td className="whitespace-nowrap px-12  py-2 text-gray-700">
                                             {post.id}
                                         </td>
                                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
